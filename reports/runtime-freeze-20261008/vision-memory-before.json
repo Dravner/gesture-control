@@ -1,0 +1,8 @@
+{
+  "scope": "Bounded real NativeVisionHands.detect test before NSData repair; 61 synthetic black 1920x1080 BGR frames, gc.collect after each frame, no camera/GUI. Values transcribed from captured command output. ru_maxrss peak, not live RSS.",
+  "samples": [{"frame":0,"peak_mib":144.3},{"frame":10,"peak_mib":239.6},{"frame":20,"peak_mib":326.9},{"frame":30,"peak_mib":414.1},{"frame":40,"peak_mib":493.3},{"frame":50,"peak_mib":572.5},{"frame":60,"peak_mib":659.8}],
+  "ownership_regression_before": [3,3,3],
+  "ownership_regression_after": [2,2,2],
+  "gui_sample_peak_physical_footprint": "59.0G",
+  "gui_sample_file": "native-thread-sample.txt"
+}

@@ -1,0 +1,3 @@
+*.svg -whitespace
+*.pth binary
+*.task binary

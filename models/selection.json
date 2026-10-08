@@ -1,0 +1,10 @@
+{
+  "method": "joint",
+  "validation_scores": {
+    "window": 0.17953488276278154,
+    "two_stage": 0.21170129152636671,
+    "joint": 0.21318762687493592
+  },
+  "checkpoint": "/Users/a1111/schcool/diplom/gesture-control/models/streaming_joint.pth",
+  "basis": "validation only; test evaluated after configuration selection"
+}

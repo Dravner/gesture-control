@@ -1,0 +1,95 @@
+{
+  "session": "data/sessions/20261008T174207-80c0076e",
+  "frames": 8255,
+  "present": 943,
+  "span_seconds": 380.91901241708547,
+  "large_gaps": [
+    {
+      "index": 2913,
+      "capture_gap_seconds": 0.656567084020935,
+      "before_after_gui_age_ms": [
+        673.5028686523438,
+        55.252166748046875
+      ],
+      "before_after_compute_ms": [
+        294.5310363769531,
+        10.001625061035156
+      ]
+    },
+    {
+      "index": 7061,
+      "capture_gap_seconds": 26.933339416980743,
+      "before_after_gui_age_ms": [
+        36.935585021972656,
+        57.3754997253418
+      ],
+      "before_after_compute_ms": [
+        32.82158279418945,
+        28.54920768737793
+      ]
+    },
+    {
+      "index": 8175,
+      "capture_gap_seconds": 10.182204541983083,
+      "before_after_gui_age_ms": [
+        11362.83984375,
+        1304.0137939453125
+      ],
+      "before_after_compute_ms": [
+        10170.9755859375,
+        119.15079498291016
+      ]
+    },
+    {
+      "index": 8176,
+      "capture_gap_seconds": 1.2894918749807402,
+      "before_after_gui_age_ms": [
+        1304.0137939453125,
+        46.610164642333984
+      ],
+      "before_after_compute_ms": [
+        119.15079498291016,
+        30.37274932861328
+      ]
+    },
+    {
+      "index": 8180,
+      "capture_gap_seconds": 60.75550520804245,
+      "before_after_gui_age_ms": [
+        5556.9443359375,
+        3152.122314453125
+      ],
+      "before_after_compute_ms": [
+        22.562833786010742,
+        26.700458526611328
+      ]
+    },
+    {
+      "index": 8181,
+      "capture_gap_seconds": 3.1326154998969287,
+      "before_after_gui_age_ms": [
+        3152.122314453125,
+        39.75037384033203
+      ],
+      "before_after_compute_ms": [
+        26.700458526611328,
+        23.971458435058594
+      ]
+    },
+    {
+      "index": 8252,
+      "capture_gap_seconds": 0.6759340410353616,
+      "before_after_gui_age_ms": [
+        728.223388671875,
+        80.83737182617188
+      ],
+      "before_after_compute_ms": [
+        699.094482421875,
+        33.492958068847656
+      ]
+    }
+  ],
+  "user_report": "Test window hangs; asked to check and repeat request.",
+  "observed_receipts": "One swipe_right executed and one command+right shortcut received by test scene. Other gestures not proven.",
+  "diagnosis": "Camera/read/inference pipeline stalled, followed by capture failure. Scene continued receiving clicks. Confirmed GUI defects: no stream-failure feedback in scene, scene input checkbox not synchronized to parent. Actual reason for long native API pauses remains unknown; sleep events absent in filtered system power log."
+}

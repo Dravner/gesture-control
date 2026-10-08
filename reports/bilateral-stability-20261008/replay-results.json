@@ -1,0 +1,91 @@
+{
+  "before": {
+    "labels": {
+      "no_hand": 7570,
+      "uncertain": 4368,
+      "palm": 3695,
+      "point": 2589,
+      "pinch": 590,
+      "victory": 1031
+    },
+    "phases": {
+      "recovery": 12183,
+      "swipe_pending": 852,
+      "swipe": 1619,
+      "swipe_latched": 2199,
+      "pointer": 1230,
+      "scroll_pending": 538,
+      "pinch_candidate": 102,
+      "pinch_held": 102,
+      "scroll": 1018
+    },
+    "label_transitions": 1636,
+    "phase_transitions": 711,
+    "actions": {
+      "move": 1087,
+      "hotkey": 19,
+      "click": 16,
+      "scroll": 96
+    }
+  },
+  "after": {
+    "labels": {
+      "no_hand": 7300,
+      "pinch": 915,
+      "uncertain": 1268,
+      "palm": 2882,
+      "point": 6222,
+      "victory": 1256
+    },
+    "phases": {
+      "recovery": 12958,
+      "pointer": 4590,
+      "pinch_candidate": 136,
+      "pinch_held": 175,
+      "scroll_pending": 479,
+      "drag": 10,
+      "scroll": 1495
+    },
+    "label_transitions": 1068,
+    "phase_transitions": 365,
+    "actions": {
+      "move": 4347,
+      "click": 23,
+      "drag_start": 1,
+      "drag_end": 1,
+      "scroll": 322,
+      "hotkey": 1
+    }
+  },
+  "after_mirror": {
+    "labels": {
+      "no_hand": 7300,
+      "pinch": 915,
+      "uncertain": 1268,
+      "palm": 2882,
+      "point": 6222,
+      "victory": 1256
+    },
+    "phases": {
+      "recovery": 12958,
+      "pointer": 4590,
+      "pinch_candidate": 136,
+      "pinch_held": 175,
+      "scroll_pending": 479,
+      "drag": 10,
+      "scroll": 1495
+    },
+    "label_transitions": 1068,
+    "phase_transitions": 365,
+    "actions": {
+      "move": 4347,
+      "click": 23,
+      "drag_start": 1,
+      "drag_end": 1,
+      "scroll": 322,
+      "hotkey": 1
+    }
+  },
+  "mirror_phase_mismatches": 0,
+  "limits": "Only saved accepted image coordinates can be replayed. Old rejected hand observations have no image points; new confidence gate cannot recover them. More cursor frames/fewer changes are not accuracy; no intention labels. Horizontal mirrored motion reverses navigation direction by design."
+}

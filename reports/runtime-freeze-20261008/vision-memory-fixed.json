@@ -1,0 +1,113 @@
+{
+  "scope": "Synthetic black 1920x1080 BGR frames; real Apple Vision, no hand, camera or GUI. RSS includes runtime caches.",
+  "samples": [
+    {
+      "frame": 0,
+      "rss_mib": 144.046875,
+      "peak_mib": 151.953125
+    },
+    {
+      "frame": 20,
+      "rss_mib": 191.640625,
+      "peak_mib": 207.65625
+    },
+    {
+      "frame": 40,
+      "rss_mib": 217.3125,
+      "peak_mib": 233.328125
+    },
+    {
+      "frame": 60,
+      "rss_mib": 225.34375,
+      "peak_mib": 241.328125
+    },
+    {
+      "frame": 80,
+      "rss_mib": 217.3125,
+      "peak_mib": 241.421875
+    },
+    {
+      "frame": 100,
+      "rss_mib": 225.453125,
+      "peak_mib": 241.46875
+    },
+    {
+      "frame": 120,
+      "rss_mib": 241.328125,
+      "peak_mib": 257.34375
+    },
+    {
+      "frame": 140,
+      "rss_mib": 257.296875,
+      "peak_mib": 273.28125
+    },
+    {
+      "frame": 160,
+      "rss_mib": 257.421875,
+      "peak_mib": 273.4375
+    },
+    {
+      "frame": 180,
+      "rss_mib": 257.46875,
+      "peak_mib": 273.484375
+    },
+    {
+      "frame": 200,
+      "rss_mib": 257.46875,
+      "peak_mib": 273.484375
+    },
+    {
+      "frame": 220,
+      "rss_mib": 257.546875,
+      "peak_mib": 273.546875
+    },
+    {
+      "frame": 240,
+      "rss_mib": 257.578125,
+      "peak_mib": 273.59375
+    },
+    {
+      "frame": 260,
+      "rss_mib": 257.609375,
+      "peak_mib": 273.625
+    },
+    {
+      "frame": 280,
+      "rss_mib": 257.640625,
+      "peak_mib": 273.65625
+    },
+    {
+      "frame": 300,
+      "rss_mib": 257.703125,
+      "peak_mib": 273.71875
+    },
+    {
+      "frame": 320,
+      "rss_mib": 257.734375,
+      "peak_mib": 273.75
+    },
+    {
+      "frame": 340,
+      "rss_mib": 257.8125,
+      "peak_mib": 273.828125
+    },
+    {
+      "frame": 360,
+      "rss_mib": 257.84375,
+      "peak_mib": 273.859375
+    },
+    {
+      "frame": 380,
+      "rss_mib": 257.890625,
+      "peak_mib": 273.90625
+    },
+    {
+      "frame": 400,
+      "rss_mib": 257.9375,
+      "peak_mib": 273.9375
+    }
+  ],
+  "route_ms_p50": 8.169624954462051,
+  "route_ms_p95": 9.692333056591451,
+  "frames": 401
+}

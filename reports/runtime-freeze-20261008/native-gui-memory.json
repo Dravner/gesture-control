@@ -1,0 +1,46 @@
+{
+  "pid": 59732,
+  "scope": "Native GUI with live camera and repaired Apple Vision; OS input initially off, enabled by user during the final interval; no controlled intention labels.",
+  "samples": [
+    {
+      "monitor_seconds": 0.003,
+      "rss_mib": 1158.734375,
+      "process_elapsed": "02:02"
+    },
+    {
+      "monitor_seconds": 30.012,
+      "rss_mib": 1160.390625,
+      "process_elapsed": "02:32"
+    },
+    {
+      "monitor_seconds": 60.02,
+      "rss_mib": 924.875,
+      "process_elapsed": "03:02"
+    },
+    {
+      "monitor_seconds": 90.029,
+      "rss_mib": 1074.734375,
+      "process_elapsed": "03:32"
+    },
+    {
+      "monitor_seconds": 120.037,
+      "rss_mib": 1122.53125,
+      "process_elapsed": "04:02"
+    },
+    {
+      "monitor_seconds": 150.046,
+      "rss_mib": 1085.984375,
+      "process_elapsed": "04:32"
+    },
+    {
+      "monitor_seconds": 180.055,
+      "rss_mib": 1117.71875,
+      "process_elapsed": "05:02"
+    },
+    {
+      "monitor_seconds": 210.064,
+      "rss_mib": 1151.0625,
+      "process_elapsed": "05:32"
+    }
+  ]
+}

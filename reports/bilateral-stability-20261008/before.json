@@ -1,0 +1,30 @@
+{
+  "session": "20261008T183159-a8604adb",
+  "frames": 19843,
+  "present": 12273,
+  "geometry": {
+    "": 7570,
+    "uncertain": 4368,
+    "palm": 3695,
+    "point": 2589,
+    "pinch": 590,
+    "victory": 1031
+  },
+  "phases": {
+    "recovery": 12328,
+    "swipe_pending": 852,
+    "swipe": 1619,
+    "swipe_latched": 2199,
+    "pointer": 1103,
+    "scroll_pending": 538,
+    "pinch_candidate": 90,
+    "pinch_held": 96,
+    "scroll": 1018
+  },
+  "reflection_test": {
+    "present": 12273,
+    "mirror_mismatches": 0
+  },
+  "geometry_changes_on_present_observations": 1189,
+  "limits": "No handedness, per-joint confidence or gesture intention annotation stored in old session. Reflection tests classifier symmetry, not live hand detection equality."
+}

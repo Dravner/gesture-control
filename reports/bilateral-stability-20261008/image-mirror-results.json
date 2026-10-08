@@ -1,0 +1,133 @@
+{
+  "scope": "4 public IPN Hand clips from distinct filename prefixes; 40 contiguous midpoint frames per clip and orientation. Actual RGB images mirrored, not just coordinates. Pose intentions not annotated. Chirality predictions are not hand ground truth.",
+  "results": [
+    {
+      "video": "1CM1_1_R_#217.avi",
+      "mirror": false,
+      "counts": {
+        "processed": 40,
+        "present": 40,
+        "pinch": 31,
+        "point": 1,
+        "palm": 8
+      },
+      "handedness": {
+        "Right": 40
+      },
+      "old_all_21_confidence_at_least_04": 40,
+      "route_ms_p50": 8.467459003441036
+    },
+    {
+      "video": "1CM1_1_R_#217.avi",
+      "mirror": true,
+      "counts": {
+        "processed": 40,
+        "present": 40,
+        "pinch": 31,
+        "victory": 1,
+        "palm": 8
+      },
+      "handedness": {
+        "Left": 40
+      },
+      "old_all_21_confidence_at_least_04": 40,
+      "route_ms_p50": 8.660499937832355
+    },
+    {
+      "video": "1CM42_21_R_#153.avi",
+      "mirror": false,
+      "counts": {
+        "processed": 40,
+        "present": 0,
+        "no_hand": 40
+      },
+      "handedness": {
+        "Right": 40
+      },
+      "old_all_21_confidence_at_least_04": 0,
+      "route_ms_p50": 4.08133293967694
+    },
+    {
+      "video": "1CM42_21_R_#153.avi",
+      "mirror": true,
+      "counts": {
+        "processed": 40,
+        "present": 0,
+        "no_hand": 40
+      },
+      "handedness": {
+        "Right": 40
+      },
+      "old_all_21_confidence_at_least_04": 0,
+      "route_ms_p50": 4.835875006392598
+    },
+    {
+      "video": "1CV12_12_R_#89.avi",
+      "mirror": false,
+      "counts": {
+        "processed": 40,
+        "present": 40,
+        "victory": 26,
+        "pinch": 8,
+        "uncertain": 3,
+        "palm": 2,
+        "point": 1
+      },
+      "handedness": {
+        "Right": 40
+      },
+      "old_all_21_confidence_at_least_04": 21,
+      "route_ms_p50": 8.265375043265522
+    },
+    {
+      "video": "1CV12_12_R_#89.avi",
+      "mirror": true,
+      "counts": {
+        "processed": 40,
+        "present": 39,
+        "victory": 17,
+        "point": 5,
+        "uncertain": 9,
+        "palm": 8,
+        "no_hand": 1
+      },
+      "handedness": {
+        "Left": 40
+      },
+      "old_all_21_confidence_at_least_04": 27,
+      "route_ms_p50": 9.333916939795017
+    },
+    {
+      "video": "4CM11_19_R_#17.avi",
+      "mirror": false,
+      "counts": {
+        "processed": 40,
+        "present": 36,
+        "no_hand": 4,
+        "victory": 36
+      },
+      "handedness": {
+        "Right": 40
+      },
+      "old_all_21_confidence_at_least_04": 36,
+      "route_ms_p50": 8.080791914835572
+    },
+    {
+      "video": "4CM11_19_R_#17.avi",
+      "mirror": true,
+      "counts": {
+        "processed": 40,
+        "present": 38,
+        "no_hand": 2,
+        "uncertain": 2,
+        "point": 2,
+        "victory": 34
+      },
+      "handedness": {
+        "Left": 40
+      },
+      "old_all_21_confidence_at_least_04": 35,
+      "route_ms_p50": 8.07108310982585
+    }
+  ]
+}

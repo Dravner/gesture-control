@@ -1,0 +1,487 @@
+{
+  "scope": "Synthetic observations explicitly supply pose labels; HandTracker/MediaPipe and OS/GUI bypassed. This measures controller timing invariance and gap policy, not recognition accuracy or live latency. No article edits.",
+  "protocol": "Open palm at rest until0.4s,0.3frame horizontal displacement over0.45s, optional absence begins0.52s, optional uncertain pose during motion; neutral after1.1s;15/30/60Hz. Temporary default gesture bindings.",
+  "source_sha256": "ec93059310fa9108af23d3358ad0391747b316b5204e890194bfdf798dcba781",
+  "scenarios": [
+    {
+      "scenario": "15fps-gap0.00-dir-1-uncertainFalse",
+      "fps": 15,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.06666666666666676,
+      "uncertain_during_motion": false,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.00-dir-1-uncertainTrue",
+      "fps": 15,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.06666666666666676,
+      "uncertain_during_motion": true,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.00-dir1-uncertainFalse",
+      "fps": 15,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.06666666666666676,
+      "uncertain_during_motion": false,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.00-dir1-uncertainTrue",
+      "fps": 15,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.06666666666666676,
+      "uncertain_during_motion": true,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.08-dir-1-uncertainFalse",
+      "fps": 15,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.1333333333333333,
+      "uncertain_during_motion": false,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.08-dir-1-uncertainTrue",
+      "fps": 15,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.1333333333333333,
+      "uncertain_during_motion": true,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.08-dir1-uncertainFalse",
+      "fps": 15,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.1333333333333333,
+      "uncertain_during_motion": false,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.08-dir1-uncertainTrue",
+      "fps": 15,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.1333333333333333,
+      "uncertain_during_motion": true,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.20-dir-1-uncertainFalse",
+      "fps": 15,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.2666666666666666,
+      "uncertain_during_motion": false,
+      "direction": "swipe_right",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.20-dir-1-uncertainTrue",
+      "fps": 15,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.2666666666666666,
+      "uncertain_during_motion": true,
+      "direction": "swipe_right",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.20-dir1-uncertainFalse",
+      "fps": 15,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.2666666666666666,
+      "uncertain_during_motion": false,
+      "direction": "swipe_left",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "15fps-gap0.20-dir1-uncertainTrue",
+      "fps": 15,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.2666666666666666,
+      "uncertain_during_motion": true,
+      "direction": "swipe_left",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.00-dir-1-uncertainFalse",
+      "fps": 30,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.03333333333333344,
+      "uncertain_during_motion": false,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.00-dir-1-uncertainTrue",
+      "fps": 30,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.03333333333333344,
+      "uncertain_during_motion": true,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.00-dir1-uncertainFalse",
+      "fps": 30,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.03333333333333344,
+      "uncertain_during_motion": false,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.00-dir1-uncertainTrue",
+      "fps": 30,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.03333333333333344,
+      "uncertain_during_motion": true,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.08-dir-1-uncertainFalse",
+      "fps": 30,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.09999999999999998,
+      "uncertain_during_motion": false,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.08-dir-1-uncertainTrue",
+      "fps": 30,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.09999999999999998,
+      "uncertain_during_motion": true,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.08-dir1-uncertainFalse",
+      "fps": 30,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.09999999999999998,
+      "uncertain_during_motion": false,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.08-dir1-uncertainTrue",
+      "fps": 30,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.09999999999999998,
+      "uncertain_during_motion": true,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.20-dir-1-uncertainFalse",
+      "fps": 30,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.23333333333333328,
+      "uncertain_during_motion": false,
+      "direction": "swipe_right",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.20-dir-1-uncertainTrue",
+      "fps": 30,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.23333333333333328,
+      "uncertain_during_motion": true,
+      "direction": "swipe_right",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.20-dir1-uncertainFalse",
+      "fps": 30,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.23333333333333328,
+      "uncertain_during_motion": false,
+      "direction": "swipe_left",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "30fps-gap0.20-dir1-uncertainTrue",
+      "fps": 30,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.23333333333333328,
+      "uncertain_during_motion": true,
+      "direction": "swipe_left",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.00-dir-1-uncertainFalse",
+      "fps": 60,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.01666666666666683,
+      "uncertain_during_motion": false,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.00-dir-1-uncertainTrue",
+      "fps": 60,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.01666666666666683,
+      "uncertain_during_motion": true,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7166666666666667,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.00-dir1-uncertainFalse",
+      "fps": 60,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.01666666666666683,
+      "uncertain_during_motion": false,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.00-dir1-uncertainTrue",
+      "fps": 60,
+      "nominal_gap_seconds": 0.0,
+      "maximum_observed_present_gap_seconds": 0.01666666666666683,
+      "uncertain_during_motion": true,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7166666666666667,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.08-dir-1-uncertainFalse",
+      "fps": 60,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.08333333333333337,
+      "uncertain_during_motion": false,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.08-dir-1-uncertainTrue",
+      "fps": 60,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.08333333333333337,
+      "uncertain_during_motion": true,
+      "direction": "swipe_right",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_right"
+      ],
+      "first_event_seconds": 0.7166666666666667,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.08-dir1-uncertainFalse",
+      "fps": 60,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.08333333333333337,
+      "uncertain_during_motion": false,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7333333333333333,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.08-dir1-uncertainTrue",
+      "fps": 60,
+      "nominal_gap_seconds": 0.08,
+      "maximum_observed_present_gap_seconds": 0.08333333333333337,
+      "uncertain_during_motion": true,
+      "direction": "swipe_left",
+      "swipe_count": 1,
+      "swipe_labels": [
+        "swipe_left"
+      ],
+      "first_event_seconds": 0.7166666666666667,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.20-dir-1-uncertainFalse",
+      "fps": 60,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.21666666666666667,
+      "uncertain_during_motion": false,
+      "direction": "swipe_right",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.20-dir-1-uncertainTrue",
+      "fps": 60,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.21666666666666667,
+      "uncertain_during_motion": true,
+      "direction": "swipe_right",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.20-dir1-uncertainFalse",
+      "fps": 60,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.21666666666666667,
+      "uncertain_during_motion": false,
+      "direction": "swipe_left",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    },
+    {
+      "scenario": "60fps-gap0.20-dir1-uncertainTrue",
+      "fps": 60,
+      "nominal_gap_seconds": 0.2,
+      "maximum_observed_present_gap_seconds": 0.21666666666666667,
+      "uncertain_during_motion": true,
+      "direction": "swipe_left",
+      "swipe_count": 0,
+      "swipe_labels": [],
+      "first_event_seconds": null,
+      "non_swipe_command_count": 0
+    }
+  ]
+}

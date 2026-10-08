@@ -1,0 +1,7 @@
+{
+  "video": "1CM1_1_R_#217.avi",
+  "frame": 1993,
+  "dataset": "IPN Hand, existing official CC BY4.0 subset; attribution in research/README.md",
+  "purpose": "Manual coordinate/order sanity check, not a keypoint accuracy benchmark. Both derived y coordinates use image top-left; no user camera photo.",
+  "joint_disagreement_normalized_median": 0.019520774268191116
+}

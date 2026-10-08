@@ -1,0 +1,14 @@
+{
+  "url": "https://github.com/alexandriax/pawvis",
+  "commit": "039e6d8ede814cb943532b841e6c78f83fba1f62",
+  "license": "MIT",
+  "usage": "Read-only source inspection; no foreign executable installed or run; independent Python implementation of posture confidence, pose holds and pixel-scroll ideas.",
+  "files_sha256": {
+    "Sources/PawvisCore/Hands/HandFeatures.swift": "79b985201aff8924e0237111f20af500a74ff715db8bb54f1e87e1584bfa8fe7",
+    "Sources/PawvisCore/Gestures/GestureEngine.swift": "7e1afc1368193e059591ac19d34d8515d4dc4f30c84c982cf83ff82a1df90476",
+    "Sources/Pawvis/Control/MouseController.swift": "3848d33cd55cd6895051c4d3e74db95930066af5914e4ef701d7b543b89a4f4c",
+    "Sources/PawvisCore/Gestures/GestureConfig.swift": "dbd69b945667ac4f0100dcebfddb4b3d5c01855c00be09126738c5008a76326c",
+    "Sources/Pawvis/Camera/HandTrackingService.swift": "aa646c24bf309289357653fe7cbe1b800cfccff24648c60f86aeb58b743a890f",
+    "LICENSE": "f4fa94cf8c87c250721c390cc9d38e213b8ed8c5c8b1890d4d2296f164f390f7"
+  }
+}

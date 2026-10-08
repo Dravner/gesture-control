@@ -1,0 +1,61 @@
+{
+  "tests": {
+    "command": "QT_QPA_PLATFORM=offscreen .venv/bin/python -m pytest -q tests",
+    "passed": 291,
+    "seconds": 16.5,
+    "exit_code": 0
+  },
+  "source_sha256": {
+    "gesture_system/__init__.py": "8d7cb9650877f99f1c0ea753a293e081c2d8114ab41cc31aecc5de2934789f03",
+    "gesture_system/actions.py": "1da76d28da1dd1c13656cd7fa7667686a5a72da3b947caa5d2b6796da19e211d",
+    "gesture_system/apple_vision.py": "875f59e3b17d4d6f2d8241d990e778e471270773854ebeaa09a89b2cff27f6f5",
+    "gesture_system/calibration_sampling.py": "5541553095425b16b6a6a013e1967b46f90427e91759585820c9edb0537c9b91",
+    "gesture_system/camera_activity.py": "0dc51616e0df132f6de568f3aa8078ec75cf664a571adffeaef6b570c20bf659",
+    "gesture_system/engine.py": "9045966125e65b8ab6effeda63c8796acde548c062c9f0018e4a77fe4a2fa436",
+    "gesture_system/gui.py": "b38136ff702b05932583077cb37af9f1977edf0b9e1133b2ae4c933b9e818c63",
+    "gesture_system/live_runtime.py": "45d06d991cbc109e0039e96b4dc3a0256f476de944f091d00487f89bc080499e",
+    "gesture_system/personal.py": "fa7cf9c1e5c2051edf5e01f4919c18e71aaf546d2c711897609322ea093d14c1",
+    "gesture_system/pointing.py": "17dd35a904ca0dee8f3c7421d6cc4cecddd82bda70d317820241baf130263ef8",
+    "gesture_system/pointing_ui.py": "07a274c190f18147b75b0ab98f5df3c2bbe004f77bee9ad858b5aac3831bcc82",
+    "gesture_system/pose_stability.py": "ba35e09d9de68169a6bc17d5a0472300b0ad9a40b130d91582582b688ecff823",
+    "gesture_system/profiles.py": "c4915d124b128838dd002c0d9437f45653c317e081fef913767fcab4571f3230",
+    "gesture_system/stable_control.py": "3895a53def3f369f49f1970a72026a3bd6ad23b87c9d3ceb8a6f4d5e71fcbd69",
+    "gesture_system/temporal.py": "b9be2a6b7b3fbe321d2a8a39eea0567ca504d063f2c951ba73e3421accc1b586",
+    "gesture_system/tracking.py": "7699efe9a802bae84630522baf409a3963272d77fa203eb581a42edfe6b53b79",
+    "gesture_system/types.py": "5848c21b109bdd7250af5bd50e70f4a2cfb551bb2cc0bcc766bd0ddc1608fe3e",
+    "gesture_system/vision.py": "654252f2efad22325dce1348cd7349bd02795c11610a9fb92ba9fb755b7211f3",
+    "gesture_system/workspace_pointer.py": "fdac43c2dc5c4d4fd14a28827c95a79bf1cd24c46079ec252e7fa30d91ca5121",
+    "gesture_system/workspace_ui.py": "4d2478c339a6c0851b539aa12009119b9ec305c99fb52a49a95562372769d206",
+    "launch.py": "b99d433fd7731939114a0e6c417fdb90bd3e403e23367fb10797403fb0bd1b3e",
+    "requirements.txt": "6a5ce2c5c2fcaf78a65f45a85091717c82ce737f6d18cbe910dbce2f986ab884",
+    "tests/test_apple_vision.py": "b959178d73e7ff70c2e390f6a3d93b8a31aab2ac4a2b18752f9803ecca797d32",
+    "tests/test_calibration_sampling.py": "a23b164fb67d194e7c8c30d626fa27996ccc4a232e0d65127fad33816e8d5d87",
+    "tests/test_camera_activity.py": "5e514326b841d6ea096f767c0ad8d8528aba6cc62fd25d538c04c35f0898b1ba",
+    "tests/test_core.py": "e5c7e3c43d2a59baad035f00a168b42e734c7483faffb19e72e3f6b4cf9c1e3c",
+    "tests/test_distinct_navigation.py": "5707fc02b8dc87c5668612170602e0e16e9110b08ebadab392871b8196ead2d3",
+    "tests/test_gui.py": "ba72a843047f49e20f8356a1a8b0b913c3c73bf3293c353f4e90fb2cabde06a4",
+    "tests/test_image_geometry.py": "6b1cef61d81010b534f694de8cb127cf987a4806c57639d77f9395d7ad58919f",
+    "tests/test_live_runtime.py": "80ab4b7a0d04ad5ea89a456cedf652b7620b2dd04fcad01a62f231b002b95274",
+    "tests/test_live_swipe.py": "508c0af09086c07f9b4ed5e7a242e2c4dd549f4b61389f76e26897ad0097121e",
+    "tests/test_personal_v2.py": "6ba99fda53634d29924a5230866794c94f1cae06e72dd76545ea683fd5b737f6",
+    "tests/test_pointing.py": "4b9deb33c9299d43c72b9f72a90249e0df7266d7394371aba105826772966d39",
+    "tests/test_pointing_ui.py": "04566e5001cff2f5a2665707a688bbd9aeab426544389fa561f66df25bbad733",
+    "tests/test_pose_stability.py": "3666b4368fdd4c2cff080e17038d451e93acca3b21b27b5854e385a03c357794",
+    "tests/test_receipt_health.py": "f9fbf945bd126b5fbf89310b6a516e30ce454160a312dc6862e71fbf9dfd9207",
+    "tests/test_research.py": "01f254ef5aeeda97d4e5707e4590a1b974f8c064d8becb5fe0dfa9088cd8c496",
+    "tests/test_scroll_practice.py": "6aac02094593b89c627080daef974d1ef15f848b376762cfcebf7c0c097032c1",
+    "tests/test_stable_control.py": "f79048e2f5c0aee4de64940b8c58a36ab17484d9a94bd20e366edb8b03bdfd54",
+    "tests/test_vision_actions.py": "8767e71be5ce2899aba3fe5839e1815099a6414e0ac030d64f30d7b8f2368ce4",
+    "tests/test_workspace_pointer.py": "eaa2ace18a33501a021c0d245d0e2686605dda1fc0eea6d1e42d72722af9b2d4",
+    "tests/test_workspace_ui.py": "bcb182415790ad7c392f17a6fbb9c3d1f1a4db5b7579daf112e4b5d5a564dab9"
+  },
+  "reproduced_before": {
+    "pure_pixel_wheel_27_plus_5": "QTextEdit scrollbar remains0 instead of32",
+    "first_left_swipe": "old page0 remains0"
+  },
+  "verified_after": {
+    "pixel_wheel_27_plus_5": "actual content32px; receipts keep pixel delta and scroll position",
+    "scroll_vs_navigation": "separate V and three-finger pose; diagonal V cannot issue hotkey; three-finger stroke emits once without move/scroll"
+  },
+  "native": "New process started, camera started22:22:47; OS input initially off. Actual user navigation test pending."
+}
