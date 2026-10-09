@@ -1,0 +1,20 @@
+{
+  "kind": "packaged live camera smoke; unlabelled, not accuracy",
+  "frames": 1185,
+  "os_input_enabled": false,
+  "inference_ms": {
+    "n": 1185,
+    "p50": 26.554916381835938,
+    "p95": 32.536407470703125
+  },
+  "capture_to_result_ms": {
+    "n": 1185,
+    "p50": 27.128124237060547,
+    "p95": 33.8629264831543
+  },
+  "capture_to_display_ms": {
+    "n": 1185,
+    "p50": 27.225582122802734,
+    "p95": 33.92673110961914
+  }
+}

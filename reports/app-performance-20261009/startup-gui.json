@@ -1,0 +1,36 @@
+{
+  "baseline": [
+    {
+      "seconds": 0.8676403750432655,
+      "rss_mib": 265.3125,
+      "torch_loaded": true
+    },
+    {
+      "seconds": 0.8530722499126568,
+      "rss_mib": 263.859375,
+      "torch_loaded": true
+    },
+    {
+      "seconds": 0.865682250005193,
+      "rss_mib": 266.140625,
+      "torch_loaded": true
+    }
+  ],
+  "optimized": [
+    {
+      "seconds": 0.3466350839007646,
+      "rss_mib": 102.78125,
+      "torch_loaded": false
+    },
+    {
+      "seconds": 0.3327397919492796,
+      "rss_mib": 102.8125,
+      "torch_loaded": false
+    },
+    {
+      "seconds": 0.3354302920633927,
+      "rss_mib": 102.578125,
+      "torch_loaded": false
+    }
+  ]
+}

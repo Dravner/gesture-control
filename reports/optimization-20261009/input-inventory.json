@@ -1,0 +1,39 @@
+{
+  "dimensions": [
+    {
+      "width": 640,
+      "height": 480,
+      "files": 40
+    }
+  ],
+  "selected": [
+    {
+      "video": "1CM1_1_R_#217.avi",
+      "width": 640,
+      "height": 480,
+      "frames": 3987,
+      "sha256": "a2bf0c34cdc6be4ba132297b534c0aa953f20eb2ef3191b7c4b506e05d34aa56"
+    },
+    {
+      "video": "1CM42_21_R_#153.avi",
+      "width": 640,
+      "height": 480,
+      "frames": 4188,
+      "sha256": "73d442c52888bc64efd6e5fbd1f388f6bddfac601c9cbfefd9e0c93b85ac86c3"
+    },
+    {
+      "video": "1CV12_12_R_#89.avi",
+      "width": 640,
+      "height": 480,
+      "frames": 4395,
+      "sha256": "9461b3aff1684c8808729419af2bd9110aafa144bcd487408ac0a8ef1d210fb7"
+    },
+    {
+      "video": "4CM11_19_R_#17.avi",
+      "width": 640,
+      "height": 480,
+      "frames": 3823,
+      "sha256": "114b3c55d4ab65ff1a5a83d9ab88eac514a87ffdc265d4a16dcf34bc2c5da975"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ import platform
 import uuid
 from datetime import datetime, timezone
 import numpy as np
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import Qt, QTimer, Signal
 from PySide6.QtGui import QImage, QPixmap, QFont
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QLabel, QPushButton,
     QComboBox, QCheckBox, QLineEdit, QListWidget, QPlainTextEdit, QProgressBar,
@@ -228,12 +228,14 @@ def read_preferences(root):
             valid['control_mode'] = settings['control_mode']
         if isinstance(settings.get('experimental_neural'), bool):
             valid['experimental_neural'] = settings['experimental_neural']
+        valid['interaction']=settings.get('interaction',{})
         return valid
     except (OSError, ValueError, TypeError, AttributeError):
         return {}
 
 
 class MainWindow(QMainWindow):
+    packet_ready=Signal()
     def __init__(self, root, library, engine, tracker=None, actions=None, capture_factory=None, tracker_factory=None, runtime_factory=None, screen_provider=None,tracker_backend=None,camera_activity=None):
         super().__init__()
         self.root, self.library, self.engine = Path(root), library, engine
@@ -257,6 +259,9 @@ class MainWindow(QMainWindow):
             try:self.pointing_calibration=PointingCalibration.load(calibration_path)
             except (ValueError,OSError,KeyError,TypeError) as exc:self._calibration_error=str(exc)
         self._preferences = read_preferences(self.root)
+        from .interaction_settings import InteractionSettings
+        self.interaction_settings=InteractionSettings.from_dict(self._preferences.get('interaction'))
+        self.settings_dialog=None
         if tracker_backend is not None:
             if tracker_backend not in {'mediapipe','apple_vision'}:raise ValueError('Unknown hand tracking backend')
             if tracker_backend=='apple_vision':
@@ -301,7 +306,8 @@ class MainWindow(QMainWindow):
         self.resize(1240, 1040)
         self.setMinimumSize(1050, 740)
         self.timer = QTimer(self)
-        self.timer.setInterval(30)
+        self.timer.setInterval(30 if self.runtime_factory is not None else 100)
+        self.packet_ready.connect(self.tick,Qt.ConnectionType.QueuedConnection)
         self.timer.timeout.connect(self.tick)
         self._build_ui()
         self.refresh_library()
@@ -347,7 +353,8 @@ class MainWindow(QMainWindow):
         self.pause_button.clicked.connect(self.pause_stream)
         stop_button = QPushButton('■  Стоп')
         stop_button.clicked.connect(self.stop_stream)
-        for item in [self.source, self.choose_video, self.source_name, self.method, self.start_button, self.pause_button, stop_button]:
+        settings_button=QPushButton('Настройки…');settings_button.clicked.connect(self.open_settings)
+        for item in [settings_button,self.source, self.choose_video, self.source_name, self.method, self.start_button, self.pause_button, stop_button]:
             source_bar.addWidget(item)
         layout.addLayout(source_bar)
         pointing_bar = QHBoxLayout()
@@ -641,7 +648,7 @@ class MainWindow(QMainWindow):
                         backend=self.tracking_backend.currentData()
                         tracker_factory=lambda:make_tracker(self.root,backend)
                     self.live_runtime = factory(self.root, capture_factory=self.capture_factory,
-                                                tracker_factory=tracker_factory)
+                                                tracker_factory=tracker_factory,**({'notify_packet':self.packet_ready.emit} if self.runtime_factory is None else {}))
                 self._live_generation = self.live_runtime.start()
                 self._last_missing_hand_count = 0
             source = {'kind': 'video', 'path': self.video_path} if self.video_path else {'kind': 'camera', 'index': 0, 'pipeline': 'latest_frame_workers'}
@@ -656,12 +663,14 @@ class MainWindow(QMainWindow):
                           'tracker_backend':self.tracking_backend.currentData(),
                           'camera_activity_active':self.camera_activity.active,
                           'controller_geometry_source':self.effective_geometry_source(),
+                          'interaction':self.interaction_settings.to_dict(),
                           'raw_geometry_labels_source':self.tracking_backend.currentData()})
             self._motion_log_t.clear()
             self._minimum_capture_time = self._last_packet_wall = time.monotonic()
             self._stream_stalled=False
             self._running = True
             self._last_frame_time = None
+            self.timer.setInterval(30 if self.video_path or self.runtime_factory is not None else 100)
             self.timer.start()
             self.runtime_label.setText('Видеофайл · безопасное воспроизведение' if self.video_path else 'Камера запускается в отдельном потоке…')
             self.start_button.setText('▶  Продолжить')
@@ -733,9 +742,26 @@ class MainWindow(QMainWindow):
         self._last_feature=None;self._configured_backend=backend;self.apply_settings()
         self.note('Трекер изменён. Нажмите «Запустить»; управление выключено.')
 
+    def open_settings(self):
+        if self.settings_dialog or self.pointing_dialog or self.workspace_dialog or self.receipt_dialog or self.recording or self.protocol:return
+        self.release_control()
+        from .settings_ui import SettingsDialog
+        dialog=SettingsDialog(self.interaction_settings,self.library.list_gestures(),self.save_interaction_settings,self)
+        self.settings_dialog=dialog
+        dialog.custom_requested.connect(self.open_custom_settings)
+        dialog.finished.connect(lambda _:setattr(self,'settings_dialog',None))
+        dialog.open()
+    def save_interaction_settings(self,settings,bindings):
+        self.release_control();self.library.update_mappings(bindings)
+        self.interaction_settings=settings;self.refresh_library();self.apply_settings()
+        self.note('Настройки сохранены. Системный ввод включается отдельно.')
+    def open_custom_settings(self):
+        self.profile_selector.setCurrentIndex(self.profile_selector.findData('advanced'))
+        self.record_name.setFocus()
+
     def reload_engine(self):
         from .engine import Engine
-        self.engine = Engine(self.library, method=self.method.currentData())
+        self.engine = Engine(self.library, method=self.method.currentData(),load_models=False)
         self.apply_settings()
 
     def apply_settings(self):
@@ -781,11 +807,16 @@ class MainWindow(QMainWindow):
         self.update_personal_diagnostics()
         self.engine.control_mode = 'personal' if self.protocol and self.protocol.mode=='trial' else self.control_mode.currentData()
         self.engine.experimental_neural = False if self.protocol or stable else self.experimental_neural.isChecked()
+        if self.engine.experimental_neural and self.engine._predictor is None:
+            try:self.engine.load_temporal_predictor(self.root)
+            except (OSError,ValueError,RuntimeError,ImportError) as exc:
+                self.engine.experimental_neural=False;self.experimental_neural.blockSignals(True);self.experimental_neural.setChecked(False);self.experimental_neural.blockSignals(False);self.note(f'Модель недоступна: {exc}')
+        self.interaction_settings.apply(self.engine.stable_controller,self.workspace_mapper)
         if self._settings_ready:
             settings = {'method': self.engine.method, 'confidence': self.threshold.value(), 'hold_seconds': self.hold_time.value(),
                         'control_mode': self.control_mode.currentData(), 'experimental_neural': self.experimental_neural.isChecked(),
                         'profile':self.profile_selector.currentData(), 'fov_degrees':self.fov.value(),'pointer_mode':self.pointer_mode.currentData(),'tracker_backend':self.tracking_backend.currentData(),
-                        'controller_geometry_source':self.effective_geometry_source()}
+                        'controller_geometry_source':self.effective_geometry_source(),'interaction':self.interaction_settings.to_dict()}
             path = self.root / 'data' / 'ui_settings.json'
             try:
                 path.parent.mkdir(parents=True, exist_ok=True)
@@ -875,7 +906,8 @@ class MainWindow(QMainWindow):
             self.release_control();self.workspace_mapper=WorkspaceMapper(context,WorkspaceBounds(span=(.35,.35)),relative=True)
         self.engine.pointing_calibration=self.workspace_mapper
         self.workspace_mapper.palm_anchor='midpoint'
-        self.engine.stable_controller.scroll_pixels_per_unit=self._display.geometry[3]*2.2
+        self.engine.stable_controller.scroll_pixels_per_unit=self._display.geometry[3]*self.interaction_settings.scroll_gain
+        self.interaction_settings.apply(self.engine.stable_controller,self.workspace_mapper)
     def open_workspace_editor(self):
         if self.workspace_dialog or self.pointing_dialog or self.receipt_dialog or self.recording or self.protocol:return
         try:
@@ -1166,14 +1198,14 @@ class MainWindow(QMainWindow):
 
     def current_task(self, now):
         if self.protocol is None or self.recording is None:
-            return {'mode': 'train' if self.recording else 'idle','pointer_mode':self.pointer_mode.currentData(),'controller_geometry_source':self.effective_geometry_source()}
+            return {'mode': 'train' if self.recording else 'idle','pointer_mode':self.pointer_mode.currentData(),'controller_geometry_source':self.effective_geometry_source(),'interaction':self.interaction_settings.to_dict()}
         elapsed = now-self.recording.started-self.recording.countdown
         mode = self.protocol.mode
         if elapsed<0:
             mode += '_countdown'
         elif mode=='trial' and elapsed>self.recording.duration:
             mode += '_grace'
-        return {'mode': mode, 'expected_id': self.protocol.target, 'index': self.protocol.index+1,'pointer_mode':self.pointer_mode.currentData(),'controller_geometry_source':self.effective_geometry_source()}
+        return {'mode': mode, 'expected_id': self.protocol.target, 'index': self.protocol.index+1,'pointer_mode':self.pointer_mode.currentData(),'controller_geometry_source':self.effective_geometry_source(),'interaction':self.interaction_settings.to_dict()}
 
     def begin_example(self):
         row = self.gestures.currentRow()
@@ -1502,7 +1534,7 @@ def run(root, video=None, screenshot=None,tracker_backend=None):
     app.setFont(QFont('Helvetica Neue', 11))
     root = Path(root)
     library = GestureLibrary(root / 'data' / 'gesture_profiles')
-    window = MainWindow(root, library, Engine(library, method=selected_method(root)), actions=MacActions(),tracker_backend=tracker_backend)
+    window = MainWindow(root, library, Engine(library, method=selected_method(root),load_models=False), actions=MacActions(),tracker_backend=tracker_backend)
     if video:
         window.set_video(video)
     window.show()

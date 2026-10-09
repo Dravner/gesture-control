@@ -11,6 +11,7 @@ class StableController:
         from .pose_stability import ImagePoseLatch
         self.robust_geometry=False;self.pose_latch=ImagePoseLatch()
         self.entry_dwell=.16;self.rearm_dwell=.22
+        self.pose_confirm=.06;self.pointer_acquire=.10;self.swipe_distance=.08
         self.swipe_gap_grace=.15;self.swipe_rest_window=.12;self.swipe_max_speed=4.
         self.scroll_dead_zone=0.
         self.smooth_scroll=False;self.scroll_pixels_per_unit=1800.;self.navigation_pose='palm'
@@ -93,7 +94,7 @@ class StableController:
         if self.state=='swipe_pending':
             modern=self.navigation_pose=='three'
             if not modern and np.linalg.norm(p-self._swipe_origin)>.025:self._entry_since=t;self._swipe_origin=p.copy()
-            if t-self._entry_since>=(.06 if modern else self.entry_dwell):
+            if t-self._entry_since>=(self.pose_confirm if modern else self.entry_dwell):
                 self.state='swipe'
                 if not modern:self._swipe_origin=p.copy()
                 self._swipe_start=self._entry_since if modern else t
@@ -105,7 +106,7 @@ class StableController:
         if label==active_pose and t-rest_t>=.06 and np.linalg.norm(p-rest_point)<.012:
             self._swipe_origin=p.copy();self._swipe_start=t;return []
         dx,dy=p-self._swipe_origin;duration=t-self._swipe_start
-        minimum,maximum,travel=(.08,2.,.08) if self.navigation_pose=='three' else (.12,1.2,.20)
+        minimum,maximum,travel=(.08,2.,self.swipe_distance) if self.navigation_pose=='three' else (.12,1.2,.20)
         if minimum<=duration<=maximum and abs(dx)>=travel and abs(dx)>=2*abs(dy):
             events=self._event('swipe_left' if dx>0 else 'swipe_right',t,self._position_payload(),forbidden=('move','scroll','drag_start','drag_end'))
             self.state='swipe_latched';self._neutral_since=None;self.reason='свайп завершён: расслабьте руку перед следующим'
@@ -216,13 +217,13 @@ class StableController:
             # takes ownership. Pinch freezes on the first closing observation.
             if self.state=='pointer' and label in {'victory','palm','navigation'}:
                 if self._pose_candidate!=label:self._pose_candidate=label;self._pose_since=t
-                if t-self._pose_since<.06-1e-9:
+                if t-self._pose_since<self.pose_confirm-1e-9:
                     self.last_label='point';self.phase=self.state;return events
             else:self._pose_candidate=None;self._pose_since=None
         if self.state in {'scroll_pending','scroll'} and label=='navigation' and self.navigation_pose=='three':
             if self._navigation_since is None:
                 self._navigation_since=t;self._navigation_origin=self._motion_point(f).copy()
-            if t-self._navigation_since>=.06-1e-9:
+            if t-self._navigation_since>=self.pose_confirm-1e-9:
                 since,origin=self._navigation_since,self._navigation_origin.copy()
                 self._start_swipe(f,t);self._entry_since=since;self._swipe_origin=origin
                 events+=self._process_swipe(f,t,label)
@@ -271,7 +272,7 @@ class StableController:
                     return events
                 self._exit_since=None
                 if self.state=='scroll_pending':
-                    if t-self._entry_since>=self.entry_dwell:
+                    if t-self._entry_since>=(self.pose_confirm if self.robust_geometry else self.entry_dwell)-1e-9:
                         self.state='scroll';self._scroll_y=scroll_y;self.reason='курсор зафиксирован: двигайте кисть вверх или вниз'
                         self._scroll_smooth_y=scroll_y;self._scroll_time=t;self._scroll_origin=self._motion_point(f);self._scroll_axis=None
                 else:
@@ -303,7 +304,8 @@ class StableController:
                 self._begin_pinch(f,t)
                 if pinch<=self.pinch_press:self._press_since=t
             elif label=='victory':
-                self.state='scroll_pending';self._entry_since=t;self._scroll_y=scroll_y;self._scroll_fraction=0.;self._neutral_since=None
+                self.state='scroll' if self.robust_geometry else 'scroll_pending';self._entry_since=t;self._scroll_y=scroll_y;self._scroll_fraction=0.;self._neutral_since=None
+                self._scroll_smooth_y=scroll_y;self._scroll_time=t;self._scroll_origin=self._motion_point(f);self._scroll_axis=None
             elif (label=='palm' and self.navigation_pose=='palm') or (label=='navigation' and self.navigation_pose=='three'):
                 self._start_swipe(f,t)
             elif label=='point':
@@ -325,8 +327,15 @@ class StableController:
                     raw=np.asarray(raw,dtype=float)
                     if raw.shape!=(2,) or not np.isfinite(raw).all():raise ValueError('Invalid acquisition point')
                     target=self.acquire_filter.update(raw,t)
-                    if self._point_origin is None or np.linalg.norm(target-self._point_origin)>.025:self._point_since=t;self._point_origin=target.copy()
-                    if t-self._point_since>=self.rearm_dwell-1e-9:
+                    moving_acquisition=self.robust_geometry and relative
+                    # Relative control anchors to the existing cursor. A stable
+                    # pose can acquire during motion; absolute ray mode still
+                    # needs a quiet target. Reject implausible tracking jumps.
+                    threshold=.35 if moving_acquisition else .025
+                    if self._point_origin is None or np.linalg.norm(target-self._point_origin)>threshold:self._point_since=t
+                    if moving_acquisition or self._point_origin is None:self._point_origin=target.copy()
+                    elif np.linalg.norm(target-self._point_origin)>.025:self._point_origin=target.copy()
+                    if t-self._point_since>=(self.pointer_acquire if moving_acquisition else self.rearm_dwell)-1e-9:
                         if relative:
                             try:anchor=self.position_provider() if self.position_provider is not None else self.position
                             except Exception as exc:raise ValueError('Cursor position unavailable') from exc

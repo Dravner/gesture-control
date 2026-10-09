@@ -68,6 +68,7 @@ class _Run:
     condition: threading.Condition = field(default_factory=threading.Condition)
     frame: object = None
     packet: object = None
+    notification_pending: bool = False
     error: str | None = None
     captured: int = 0
     processed: int = 0
@@ -83,13 +84,14 @@ class _Run:
 
 class LiveRuntime:
     def __init__(self, root, camera_index=0, capture_factory=None, tracker_factory=None,
-                 resolution=None, clock=time.monotonic):
+                 resolution=None, clock=time.monotonic, notify_packet=None):
         self.root = Path(root)
         self.camera_index = camera_index
         self.capture_factory = capture_factory
         self.tracker_factory = tracker_factory
         self.resolution = resolution
         self.clock = clock
+        self.notify_packet = notify_packet
         self._state = None
         self._generation = 0
 
@@ -214,6 +216,9 @@ class LiveRuntime:
                         'capture_to_result_ms': (finished-stamp)*1000,
                     })
                     state.packet = FramePacket(state.generation,sequence,stamp,finished,image,feature,metrics)
+                    notify=self.notify_packet is not None and not state.notification_pending
+                    if notify:state.notification_pending=True
+                if notify:self.notify_packet()
         except Exception as exc:
             self._fail(state, 'tracker', exc)
         finally:
@@ -232,6 +237,7 @@ class LiveRuntime:
                 return None
             packet = state.packet
             state.packet = None
+            state.notification_pending=False
             return packet
 
     def stop(self, wait=False, timeout=2.):

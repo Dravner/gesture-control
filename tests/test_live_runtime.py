@@ -378,3 +378,21 @@ def test_stale_packet_cannot_dispatch_replayed_absence_command(tmp_path):
     assert actions.executed==[]
     assert window.session.frames[-1]['phase']=='stale'
     window.pause_stream();window.close();app.processEvents()
+
+
+def test_notifications_coalesce_until_gui_consumes_and_never_hold_worker_lock(tmp_path):
+    from gesture_system.live_runtime import LiveRuntime
+    notified=[]
+    def notify():
+        assert runtime._state.condition.acquire(blocking=False)
+        runtime._state.condition.release()
+        notified.append(threading.get_ident())
+    runtime=LiveRuntime(tmp_path,capture_factory=lambda _:Capture(),tracker_factory=lambda:Tracker(.001),notify_packet=notify)
+    runtime.start()
+    try:
+        until(lambda:notified);time.sleep(.04)
+        assert len(notified)==1
+        assert runtime.take_latest() is not None
+        until(lambda:len(notified)==2)
+        assert all(owner!=threading.get_ident() for owner in notified)
+    finally:assert runtime.stop(wait=True)

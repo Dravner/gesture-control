@@ -9,8 +9,6 @@ def main():
     parser.add_argument('--screenshot', type=Path, help='Сохранить снимок интерфейса без камеры')
     parser.add_argument('--tracker',choices=['mediapipe','apple_vision'],help='Выбрать трекер при запуске; камера и OS-ввод автоматически не включаются')
     args = parser.parse_args()
-    import torch
-    torch.set_num_threads(4)
     from gesture_system.gui import run
     return run(Path(__file__).resolve().parent, args.video, args.screenshot,tracker_backend=args.tracker)
 

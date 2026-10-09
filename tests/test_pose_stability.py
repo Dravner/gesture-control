@@ -62,7 +62,7 @@ def test_single_spurious_scroll_pose_does_not_take_cursor_mode(tmp_path):
     c.process(feature(.42,middle='open'));assert c.state=='pointer'
     c.process(feature(.45));assert c.state=='pointer'
     for t in [.5,.54,.58]:c.process(feature(t,middle='open'))
-    assert c.state=='scroll_pending'
+    assert c.state=='scroll'
 
 @pytest.mark.parametrize('fps',[15,30,60])
 def test_pixel_scroll_same_travel_at_different_frame_rates(tmp_path,fps):
@@ -135,3 +135,24 @@ def test_unreadable_thumb_during_confirmed_pinch_is_not_a_release_click(tmp_path
         events+=c.process(f)
     assert not any(e.action=='click' for e in events)
     assert c.state=='recovery'
+
+
+def test_relative_pointer_acquires_while_hand_is_moving_without_cursor_jump(tmp_path):
+    from gesture_system.stable_control import StableController
+    from gesture_system.profiles import GestureLibrary
+    from gesture_system.workspace_pointer import WorkspaceMapper
+    c=StableController(GestureLibrary(tmp_path),WorkspaceMapper({'source_kind':'camera','frame_size':[640,480]},relative=True))
+    c.prefer_image_geometry=True;c.robust_geometry=True;c.position_provider=lambda:np.array([.3,.7])
+    events=[]
+    for t in np.arange(0,.121,.02):
+        f=feature(float(t));f.image_points[:,0]+=t*.8;events+=c.process(f)
+    assert c.state=='pointer'
+    first=next(e for e in events if e.action=='move')
+    assert np.allclose([first.payload['x'],first.payload['y']],[.3,.7])
+
+
+def test_confirmed_scroll_has_no_second_dwell_and_keeps_cursor_frozen(tmp_path):
+    c=modern_controller(tmp_path);position=c.position.copy()
+    for t in [.42,.44,.46,.48]:
+        assert not any(e.action=='move' for e in c.process(feature(t,middle='open')))
+    assert c.state=='scroll' and np.allclose(c.position,position)

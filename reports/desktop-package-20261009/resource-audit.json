@@ -1,0 +1,16 @@
+{
+  "models": [
+    "hand_landmarker.task",
+    "mlp_hagrid_2d_no_gesture.pth",
+    "mlp_hagrid_6classes.pth",
+    "mlp_hagrid_subsample.pth",
+    "selection.json",
+    "streaming_joint.pth",
+    "streaming_selected.pth",
+    "streaming_two_stage.pth",
+    "streaming_window.pth"
+  ],
+  "model_bytes": 8645203,
+  "external_research_profiles_included": false,
+  "python_framework_bundled": true
+}

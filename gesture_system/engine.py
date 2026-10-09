@@ -34,6 +34,13 @@ class Engine:
                 from .temporal import TemporalPredictor
                 self._predictor=TemporalPredictor(path)
 
+    def load_temporal_predictor(self,root):
+        from pathlib import Path
+        from .temporal import TemporalPredictor
+        import torch
+        torch.set_num_threads(4)
+        self._predictor=TemporalPredictor(Path(root)/'models'/f'streaming_{self.method}.pth')
+
     def reset(self,preserve_custom=False,preserve_neural=False,preserve_static=False,preserve_personal=False):
         events=self.stable_controller.reset()
         events += [ControlEvent('pinch','drag_end',max(self._clock,0.),{})] if self._drag else []

@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 
 ACTIONS={'none','click','right_click','hotkey','scroll','pause','move','drag_start','drag_end'}
-KEYS=set('abcdefghijklmnopqrstuvwxyz0123456789')|{'command','cmd','control','ctrl','shift','alt','option','space','enter','return','escape','esc','tab','backspace','delete','left','right','up','down'}|{f'f{i}' for i in range(1,13)}
+KEYS=set('abcdefghijklmnopqrstuvwxyz0123456789[]')|{'command','cmd','control','ctrl','shift','alt','option','space','enter','return','escape','esc','tab','backspace','delete','left','right','up','down'}|{f'f{i}' for i in range(1,13)}
 BUILTINS=[('palm','Ладонь','none',[]),('fist','Кулак — пауза','pause',[]),('thumbs_up','Палец вверх','hotkey',['space']),('thumbs_down','Палец вниз','right_click',[]),('victory','Два пальца — прокрутка','scroll',[]),('point','Указательный палец — курсор','move',[]),('pinch','Щипок — клик и перетаскивание','click',[]),('swipe_left','Свайп влево','hotkey',['command','left']),('swipe_right','Свайп вправо','hotkey',['command','right']),('swipe_up','Свайп вверх','hotkey',['up']),('swipe_down','Свайп вниз','hotkey',['down'])]
 BUILTINS += [('scroll_up','Бросок вверх — прокрутка','scroll',[]),('scroll_down','Бросок вниз — прокрутка','scroll',[]),('doubleclick','Двойной клик одним пальцем','click',[]),('double_rightclick','Двойной клик двумя пальцами','right_click',[]),('open_twice','Дважды раскрыть кисть','none',[]),('zoom_in','Приближение','none',[]),('zoom_out','Отдаление','none',[])]
 
@@ -116,6 +116,20 @@ class GestureLibrary:
 
     def delete(self,identifier):
         self.gestures=[g for g in self.gestures if g['id']!=identifier];self._save()
+
+    def update_mappings(self,bindings):
+        """Validate the entire edit before atomically replacing the profile."""
+        replacement=self.list_gestures()
+        for key,binding in bindings.items():
+            identifier=key if key.startswith('builtin:') else 'builtin:'+key
+            g=next(g for g in replacement if g['id']==identifier)
+            g.update(action=binding['action'],keys=list(binding.get('keys',[])))
+            self._validate(g)
+        previous=self.gestures;self.gestures=replacement
+        try:self._save()
+        except OSError:
+            self.gestures=previous
+            raise
 
     def update_mapping(self,identifier,action,keys=None,threshold=None,orientation_sensitive=None):
         g=self.get(identifier);new={**g,'action':action,'keys':list(keys or [])}

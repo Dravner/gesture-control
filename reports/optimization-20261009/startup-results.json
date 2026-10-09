@@ -1,0 +1,86 @@
+[
+  {
+    "scenario": "gui_import",
+    "repeat": 0,
+    "seconds": 0.11733816703781486,
+    "peak_rss_bytes": 57016320,
+    "torch_loaded": false
+  },
+  {
+    "scenario": "gui_import",
+    "repeat": 1,
+    "seconds": 0.11649895797017962,
+    "peak_rss_bytes": 58228736,
+    "torch_loaded": false
+  },
+  {
+    "scenario": "gui_import",
+    "repeat": 2,
+    "seconds": 0.11690458294469863,
+    "peak_rss_bytes": 57458688,
+    "torch_loaded": false
+  },
+  {
+    "scenario": "torch_import",
+    "repeat": 0,
+    "seconds": 0.5670107090845704,
+    "peak_rss_bytes": 205815808,
+    "torch_loaded": true
+  },
+  {
+    "scenario": "torch_import",
+    "repeat": 1,
+    "seconds": 0.5592637909576297,
+    "peak_rss_bytes": 206536704,
+    "torch_loaded": true
+  },
+  {
+    "scenario": "torch_import",
+    "repeat": 2,
+    "seconds": 0.5759880420519039,
+    "peak_rss_bytes": 206487552,
+    "torch_loaded": true
+  },
+  {
+    "scenario": "engine_no_models",
+    "repeat": 0,
+    "seconds": 0.04003404197283089,
+    "peak_rss_bytes": 26476544,
+    "torch_loaded": false
+  },
+  {
+    "scenario": "engine_no_models",
+    "repeat": 1,
+    "seconds": 0.040264499955810606,
+    "peak_rss_bytes": 27475968,
+    "torch_loaded": false
+  },
+  {
+    "scenario": "engine_no_models",
+    "repeat": 2,
+    "seconds": 0.03990791703108698,
+    "peak_rss_bytes": 27262976,
+    "torch_loaded": false
+  },
+  {
+    "scenario": "engine_default",
+    "repeat": 0,
+    "seconds": 0.5769430410582572,
+    "peak_rss_bytes": 208797696,
+    "torch_loaded": true
+  },
+  {
+    "scenario": "engine_default",
+    "repeat": 1,
+    "seconds": 0.5686690420843661,
+    "peak_rss_bytes": 209518592,
+    "torch_loaded": true
+  },
+  {
+    "scenario": "engine_default",
+    "repeat": 2,
+    "seconds": 0.5733989579603076,
+    "peak_rss_bytes": 208437248,
+    "torch_loaded": true
+  }
+]

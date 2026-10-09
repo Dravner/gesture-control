@@ -1,0 +1,7 @@
+Matplotlib is building the font cache; this may take a moment.
+I0000 00:00:1791503296.407943 37344932 init-domain.cc:128] Fiber init: default domain = pthread, concurrency = 13, prefix = pthread-default
+I0000 00:00:1791503296.486035 37344932 gl_context.cc:407] GL version: 2.1 (2.1 Metal - 89.4), renderer: Apple M2 Pro
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+W0000 00:00:1791503296.491991 37344934 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1791503296.495604 37344936 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.
+W0000 00:00:1791503296.510380 37344940 landmark_projection_calculator.cc:81] Using NORM_RECT without IMAGE_DIMENSIONS is only supported for the square ROI. Provide IMAGE_DIMENSIONS or use PROJECTION_MATRIX.

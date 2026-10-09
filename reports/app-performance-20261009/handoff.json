@@ -1,0 +1,15 @@
+{
+  "kind": "synthetic Qt handoff, not end-to-end camera latency",
+  "poll30": {
+    "samples": 180,
+    "median_ms": 10.333187005016953,
+    "p95_ms": 22.43246104335412,
+    "max_ms": 24.341832962818444
+  },
+  "queued": {
+    "samples": 180,
+    "median_ms": 0.15166698722168803,
+    "p95_ms": 0.23368289694190017,
+    "max_ms": 0.3327500307932496
+  }
+}

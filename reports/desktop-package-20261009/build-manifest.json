@@ -1,0 +1,46 @@
+{
+  "python": "3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "pyinstaller": "6.22.3",
+  "architecture": "arm64",
+  "build_macos": "15.6.1",
+  "bundle_id": "org.dravner.gesturecontrol",
+  "models": {
+    "hand_landmarker.task": {
+      "bytes": 7819105,
+      "sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1"
+    },
+    "mlp_hagrid_6classes.pth": {
+      "bytes": 215861,
+      "sha256": "a3166643e3ade495af5cdfbd0503c645eb3d4f1d732b17b05278365566cc3c57"
+    },
+    "mlp_hagrid_2d_no_gesture.pth": {
+      "bytes": 61281,
+      "sha256": "1164a574cc6b13f6851643366fd348e0bb50385b5e5dd62a6cf81d2d9c04d0c3"
+    },
+    "mlp_hagrid_subsample.pth": {
+      "bytes": 72753,
+      "sha256": "28293f4b8661a6e5579332f3e71a6d67ec7c0bf94b26f8f2a19e734248fbc4ae"
+    },
+    "streaming_joint.pth": {
+      "bytes": 110799,
+      "sha256": "8b34e73d67f19f4d8b4eca7a30f7153ad4c6f5444a3966ee3ef8abd2014917f9"
+    },
+    "streaming_selected.pth": {
+      "bytes": 110917,
+      "sha256": "182388777fa53fc79d4d7a5274266b355827a4e5101ecf6978659f26986d45b5"
+    },
+    "streaming_two_stage.pth": {
+      "bytes": 143281,
+      "sha256": "df0f52d407c1c9e7e52039147c533b30fb714b1ec0c89e92da33485919bb5e29"
+    },
+    "streaming_window.pth": {
+      "bytes": 110881,
+      "sha256": "cf8eecbc0d2d72c577d06cee1b7135b3139eddb55471219fb8762e305186e194"
+    },
+    "selection.json": {
+      "bytes": 325,
+      "sha256": "fe4b6dc4a165c179d375ed2d2d5c3aa8f2219d97ea487b9433364a14dcfcf9db"
+    }
+  },
+  "minimum_macos": "15.0"
+}

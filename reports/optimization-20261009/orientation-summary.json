@@ -1,0 +1,142 @@
+[
+  {
+    "cohort": "native640",
+    "max_side": 640,
+    "mirror": false,
+    "n": 140,
+    "accepted": 105,
+    "pose_pairs": 105,
+    "pose_agreement": 1.0,
+    "total_p50_ms": 6.588937540072948
+  },
+  {
+    "cohort": "native640",
+    "max_side": 640,
+    "mirror": true,
+    "n": 140,
+    "accepted": 104,
+    "pose_pairs": 98,
+    "pose_agreement": 1.0,
+    "total_p50_ms": 7.470062933862209
+  },
+  {
+    "cohort": "native640",
+    "max_side": 480,
+    "mirror": false,
+    "n": 140,
+    "accepted": 104,
+    "pose_pairs": 99,
+    "pose_agreement": 0.9595959595959596,
+    "total_p50_ms": 6.9580834824591875
+  },
+  {
+    "cohort": "native640",
+    "max_side": 480,
+    "mirror": true,
+    "n": 140,
+    "accepted": 103,
+    "pose_pairs": 97,
+    "pose_agreement": 0.9381443298969072,
+    "total_p50_ms": 7.829667010810226
+  },
+  {
+    "cohort": "native640",
+    "max_side": 320,
+    "mirror": false,
+    "n": 140,
+    "accepted": 104,
+    "pose_pairs": 95,
+    "pose_agreement": 0.9157894736842105,
+    "total_p50_ms": 6.16804207675159
+  },
+  {
+    "cohort": "native640",
+    "max_side": 320,
+    "mirror": true,
+    "n": 140,
+    "accepted": 105,
+    "pose_pairs": 95,
+    "pose_agreement": 0.9263157894736842,
+    "total_p50_ms": 7.075625064317137
+  },
+  {
+    "cohort": "upscale1920",
+    "max_side": 1920,
+    "mirror": false,
+    "n": 140,
+    "accepted": 104,
+    "pose_pairs": 102,
+    "pose_agreement": 1.0,
+    "total_p50_ms": 10.608166456222534
+  },
+  {
+    "cohort": "upscale1920",
+    "max_side": 1920,
+    "mirror": true,
+    "n": 140,
+    "accepted": 104,
+    "pose_pairs": 97,
+    "pose_agreement": 1.0,
+    "total_p50_ms": 9.603562008123845
+  },
+  {
+    "cohort": "upscale1920",
+    "max_side": 1280,
+    "mirror": false,
+    "n": 140,
+    "accepted": 104,
+    "pose_pairs": 101,
+    "pose_agreement": 0.9900990099009901,
+    "total_p50_ms": 10.938707971945405
+  },
+  {
+    "cohort": "upscale1920",
+    "max_side": 1280,
+    "mirror": true,
+    "n": 140,
+    "accepted": 103,
+    "pose_pairs": 96,
+    "pose_agreement": 0.9895833333333334,
+    "total_p50_ms": 9.715291496831924
+  },
+  {
+    "cohort": "upscale1920",
+    "max_side": 960,
+    "mirror": false,
+    "n": 140,
+    "accepted": 104,
+    "pose_pairs": 101,
+    "pose_agreement": 1.0,
+    "total_p50_ms": 8.243103977292776
+  },
+  {
+    "cohort": "upscale1920",
+    "max_side": 960,
+    "mirror": true,
+    "n": 140,
+    "accepted": 104,
+    "pose_pairs": 97,
+    "pose_agreement": 0.9896907216494846,
+    "total_p50_ms": 7.335979025810957
+  },
+  {
+    "cohort": "upscale1920",
+    "max_side": 640,
+    "mirror": false,
+    "n": 140,
+    "accepted": 104,
+    "pose_pairs": 101,
+    "pose_agreement": 0.9504950495049505,
+    "total_p50_ms": 8.010582998394966
+  },
+  {
+    "cohort": "upscale1920",
+    "max_side": 640,
+    "mirror": true,
+    "n": 140,
+    "accepted": 105,
+    "pose_pairs": 95,
+    "pose_agreement": 0.968421052631579,
+    "total_p50_ms": 6.949228991288692
+  }
+]

@@ -1,0 +1,25 @@
+dist/Жестовое управление.app: valid on disk
+dist/Жестовое управление.app: satisfies its Designated Requirement
+Executable=/Users/a1111/schcool/diplom/gesture-control/dist/Жестовое управление.app/Contents/MacOS/GestureControl
+Identifier=org.dravner.gesturecontrol
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20400 size=375539 flags=0x2(adhoc) hashes=11729+3 location=embedded
+VersionPlatform=1
+VersionMin=720896
+VersionSDK=984064
+Hash type=sha256 size=32
+CandidateCDHash sha256=d67dcffa002096e29de7d028ea569ee9689292b0
+CandidateCDHashFull sha256=d67dcffa002096e29de7d028ea569ee9689292b0c9ff0a5a3d66da9b47b60b06
+Hash choices=sha256
+CMSDigest=d67dcffa002096e29de7d028ea569ee9689292b0c9ff0a5a3d66da9b47b60b06
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=65536
+Executable Segment flags=0x1
+Page size=4096
+CDHash=d67dcffa002096e29de7d028ea569ee9689292b0
+Signature=adhoc
+Info.plist entries=13
+TeamIdentifier=not set
+Sealed Resources version=2 rules=13 files=3338
+Internal requirements count=0 size=12

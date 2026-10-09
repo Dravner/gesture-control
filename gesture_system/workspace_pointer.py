@@ -45,7 +45,7 @@ class WorkspaceMapper:
         try:json.dumps(context,allow_nan=False)
         except (TypeError,ValueError) as exc:raise ValueError('Context must be finite JSON data') from exc
         if not isinstance(relative,bool):raise ValueError('Relative mode must be boolean')
-        self.relative=relative;self.palm_anchor='median';self.reset_pointer()
+        self.relative=relative;self.palm_anchor='median';self.sensitivity=1.;self.reset_pointer()
         self.context=deepcopy(context)
         self.bounds=WorkspaceBounds() if bounds is None else bounds
         if not isinstance(self.bounds,WorkspaceBounds):raise ValueError('Expected WorkspaceBounds')
@@ -90,13 +90,13 @@ class WorkspaceMapper:
         center=self.hand_point(feature)
         if self.relative:
             if self._reference_hand is None:raise ValueError('Relative pointer requires quiet acquisition')
-            delta=(center-self._reference_hand)/self.bounds.span
+            delta=(center-self._reference_hand)/self.bounds.span*self.sensitivity
             target=self._reference_position+[-delta[0],delta[1]]
             clamped=np.clip(target,0,1)
             if np.any(target!=clamped):
                 self._reference_hand=center.copy();self._reference_position=clamped.copy()
             return clamped
-        raw=(center-np.asarray(self.bounds.center))/self.bounds.span+.5
+        raw=(center-np.asarray(self.bounds.center))/self.bounds.span*self.sensitivity+.5
         return np.clip(np.array([1-raw[0],raw[1]]),0,1)
 
     def camera_wrist(self,feature):
@@ -108,7 +108,7 @@ class WorkspaceMapper:
         anchor=_finite_vector(anchor,2,'screen anchor')
         reference=_finite_vector(reference_wrist,3,'reference palm')
         current=_finite_vector(current_wrist,3,'current palm')
-        delta=(current[:2]-reference[:2])/self.bounds.span
+        delta=(current[:2]-reference[:2])/self.bounds.span*self.sensitivity
         # Leave final clamping to controller/filter, preserving relative drag displacement.
         return anchor+np.array([-delta[0],delta[1]])
 

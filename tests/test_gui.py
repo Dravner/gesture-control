@@ -539,11 +539,12 @@ def test_trial_records_annotations_and_detections_without_training(tmp_path):
     window.session=None;window.close();app.processEvents()
 
 
-def test_control_modes_and_experimental_neural_are_explicit_and_persist(tmp_path):
+def test_control_modes_and_experimental_neural_are_explicit_and_persist(tmp_path,monkeypatch):
     from PySide6.QtWidgets import QApplication
     from gesture_system.gui import MainWindow
     from gesture_system.profiles import GestureLibrary
     from gesture_system.engine import Engine
+    monkeypatch.setattr(Engine,'load_temporal_predictor',lambda self,root:setattr(self,'_predictor',object()))
     app=QApplication.instance() or QApplication([]);library=GestureLibrary(tmp_path/'profiles')
     window=MainWindow(tmp_path,library,Engine(library,load_models=False),screen_provider=lambda:[]);window.profile_selector.setCurrentIndex(window.profile_selector.findData('advanced'))
     assert not window.experimental_neural.isChecked()
@@ -572,11 +573,12 @@ def test_diagnostics_show_rejection_distance_and_progress(tmp_path):
     window.close();app.processEvents()
 
 
-def test_cancelling_trial_restores_mode_and_keeps_os_input_off(tmp_path):
+def test_cancelling_trial_restores_mode_and_keeps_os_input_off(tmp_path,monkeypatch):
     from PySide6.QtWidgets import QApplication
     from gesture_system.gui import MainWindow
     from gesture_system.profiles import GestureLibrary
     from gesture_system.engine import Engine
+    monkeypatch.setattr(Engine,'load_temporal_predictor',lambda self,root:setattr(self,'_predictor',object()))
     app=QApplication.instance() or QApplication([]);library=GestureLibrary(tmp_path/'profiles')
     ident=library.add('Тест','static',np.ones((8,48)),'click')
     window=MainWindow(tmp_path,library,Engine(library,load_models=False),screen_provider=lambda:[]);window.profile_selector.setCurrentIndex(window.profile_selector.findData('advanced'));window._running=True
